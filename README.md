@@ -1,4 +1,4 @@
-# Task Manager Final Enterprise Pack
+# Task Manager
 
 This project contains:
 - A Spring Boot backend (`task-service`) for task CRUD and search.
@@ -9,7 +9,6 @@ This project contains:
 - Backend: Spring Boot 3.2.2, Spring Web, Spring Data JPA, H2, Spring Cache
 - Resilience: Resilience4j (Circuit Breaker + Rate Limiter)
 - API Docs: springdoc OpenAPI + Swagger UI
-- Frontend: AngularJS 1.8.2
 - Container orchestration: Docker Compose
 
 ## Project Structure
