@@ -15,8 +15,7 @@ This project contains:
 ## Project Structure
 
 - `task-service/` - Java backend service
-- `frontend-ui/` - Static AngularJS UI served by Nginx
-- `docker-compose.yml` - Runs backend on `8080` and UI on `4200`
+- `docker-compose.yml` - Runs backend on `8080`
 
 ## Run the Project
 
@@ -28,7 +27,6 @@ docker compose up --build
 
 Services:
 - Backend API: `http://localhost:8080`
-- Frontend UI: `http://localhost:4200`
 - Swagger UI: `http://localhost:8080/swagger-ui.html`
 
 ### Option 2: Run Backend Locally
@@ -39,7 +37,7 @@ From `task-service/`:
 mvn spring-boot:run
 ```
 
-Then open `frontend-ui/index.html` (or serve it via any static server) and ensure backend is available at `http://localhost:8080`.
+Then open `http://localhost:8080`.
 
 ## Backend Features
 
