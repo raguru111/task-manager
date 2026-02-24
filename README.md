@@ -2,7 +2,6 @@
 
 This project contains:
 - A Spring Boot backend (`task-service`) for task CRUD and search.
-- An AngularJS frontend (`frontend-ui`) for listing and creating tasks.
 - A `docker-compose.yml` to run both services together.
 
 ## Tech Stack
@@ -222,44 +221,6 @@ Nested class:
   - `getMessage()`
   - `getPath()`
   - `getDetails()`
-
-## Frontend Features
-
-- AngularJS module: `taskApp`
-- Controller-driven task listing
-- Create task flow with auto-refresh
-- Basic UI with title input + tasks list
-- Calls backend at `http://localhost:8080/tasks`
-
-## Frontend File and Method Inventory
-
-### `frontend-ui/app.js`
-
-- Defines Angular module:
-  - `angular.module('taskApp', [])`
-
-### `frontend-ui/task.service.js`
-
-Service: `TaskService`
-
-Methods:
-- `getAll()` -> `GET /tasks` (expects paged response)
-- `create(t)` -> `POST /tasks`
-
-### `frontend-ui/task.controller.js`
-
-Controller: `TaskController`
-
-Methods:
-- `load()` - Fetches task page and stores response in `$scope.tasks`
-- `$scope.create()` - Creates task using entered title, then reloads
-
-### `frontend-ui/index.html`
-
-UI elements:
-- Title input bound to `ng-model="title"`
-- Create button bound to `create()`
-- Repeated list rendering `tasks.content` titles
 
 ## Docker Compose Setup
 
