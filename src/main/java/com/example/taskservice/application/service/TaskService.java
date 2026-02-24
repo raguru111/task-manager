@@ -13,6 +13,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
+import java.util.*;
 
 @Service
 public class TaskService {
@@ -20,7 +21,7 @@ public class TaskService {
  private final TaskRepository repo;
  private final ApplicationEventPublisher publisher;
  private final AuditLogger audit;
-
+ List<Task> tasks = new ArrayList<>();
  public TaskService(TaskRepository r,ApplicationEventPublisher p,AuditLogger a){
   repo=r;publisher=p;audit=a;
  }
@@ -28,13 +29,22 @@ public class TaskService {
  public Task create(Task t){
   Task saved=repo.save(t);
   audit.log("created "+saved.getId());
+  tasks.add(t);
   publisher.publishEvent(new TaskCreatedEvent(saved.getId()));
   return saved;
  }
 
+ public List<Task> getTasks() {
+
+  return this.tasks;
+ };
  public Task get(Long id) {
   return repo.findById(id)
    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Task not found"));
+ }
+
+ public Optional<Task> getByTitle(String title){
+  return tasks.stream().filter(t -> t.getTitle().equalsIgnoreCase(title)).findFirst();
  }
 
  public Task update(Long id, Task input) {
